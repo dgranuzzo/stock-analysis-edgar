@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  stock-analysis:
+    build: .
+    container_name: stock-analysis
+    ports:
+      - "8501:8501"
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ENABLE_CORS=false
+    restart: unless-stopped
+    volumes:
+      - ./app.py:/app/app.py
